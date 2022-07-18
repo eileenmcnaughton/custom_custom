@@ -1,11 +1,24 @@
 <?php
-CRM_Core_BAO_OptionValue::ensureOptionValueExists([
-  'option_group_id' => 'cg_extend_objects',
-  'name' => 'civicrm_custom_field',
-  'label' => ts('Custom Fields'),
-  'value' => 'CustomField',
-]);
 return [
+  [
+    'name' => 'cg_extend_objects:CustomField',
+    'entity' => 'OptionValue',
+    'cleanup' => 'always',
+    'update' => 'always',
+    'params' => [
+      'version' => 4,
+      'values' => [
+        'option_group_id.name' => 'cg_extend_objects',
+        'label' => E::ts('Custom Fields'),
+        'value' => 'CustomField',
+        'name' => 'civicrm_custom_field',
+        'is_reserved' => TRUE,
+        'is_active' => TRUE,
+        'grouping' => NULL,
+      ],
+      'match' => ['option_group_id', 'name'],
+    ],
+  ],
   [
     'name' => 'CustomGroup_Custom_Fields',
     'entity' => 'CustomGroup',
